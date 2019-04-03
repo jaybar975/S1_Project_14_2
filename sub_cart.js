@@ -5,8 +5,8 @@
    Tutorial 12
    Case Problem 2
 
-   Author: 
-   Date:   
+   Author: Justin Aybar
+   Date: 4.3.19
 
    Filename: sub_cart.js
 
@@ -21,4 +21,8 @@
       the customer.
 
 */
+window.addEventListener("load", setupCart);
 
+function setupCart() {
+      var addButtons
+}
