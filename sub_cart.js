@@ -24,5 +24,24 @@
 window.addEventListener("load", setupCart);
 
 function setupCart() {
-      var addButtons = document.getElementsByClassName("addButtons");
+      var addButtons = document.querySelectorAll("addButtons");
+
+      for (var i = 0; i = addButtons.length; i++) {
+            addButtons[i].onclick = addItem;
+      }
+}
+
+function addItem(e) {
+      var foodItem = e.target.nextElementSibling;
+      var foodID = foodItem.id;
+      var foodDescription = foodItem.cloneNode();
+      var cartBox = document.getElementById("cart");
+      var duplicateOrder = false;
+
+      for (var n = cartBox.firstChild; n.nextElementSibling; n != null) {
+            if (n.id === foodID) {
+                  duplicateOrder = true
+                  n.firstElementChild.textContent++;
+            }
+      }
 }
