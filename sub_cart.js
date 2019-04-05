@@ -24,5 +24,5 @@
 window.addEventListener("load", setupCart);
 
 function setupCart() {
-      var addButtons
+      var addButtons = document.getElementsByClassName("addButtons");
 }
