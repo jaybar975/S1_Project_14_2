@@ -24,9 +24,9 @@
 window.addEventListener("load", setupCart);
 
 function setupCart() {
-      var addButtons = document.querySelectorAll("addButtons");
+      var addButtons = document.querySelectorAll(".addButton");
 
-      for (var i = 0; i = addButtons.length; i++) {
+      for (var i = 0; i < addButtons.length; i++) {
             addButtons[i].onclick = addItem;
       }
 }
@@ -34,14 +34,22 @@ function setupCart() {
 function addItem(e) {
       var foodItem = e.target.nextElementSibling;
       var foodID = foodItem.id;
-      var foodDescription = foodItem.cloneNode();
+      var foodDescription = foodItem.cloneNode(true);
       var cartBox = document.getElementById("cart");
       var duplicateOrder = false;
 
-      for (var n = cartBox.firstChild; n.nextElementSibling; n != null) {
-            if (n.id === foodID) {
-                  duplicateOrder = true
-                  n.firstElementChild.textContent++;
+      for (var i = 0; i < cartBox.childNodes.length; i++) {
+            if (cartBox.childNodes[i].id === foodID) {
+                  cartBox.childNodes[i].firstElementChild.textContent++;
+                  duplicateOrder = true;
+                  break;
             }
+      }
+
+      if (duplicateOrder === false) {
+            var orderCount = document.createElement("span");
+            orderCount.textContent = 1;
+            foodDescription.prepend(orderCount);
+            cartBox.appendChild(foodDescription);
       }
 }
